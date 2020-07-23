@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    
+    <link type="text/css" rel="stylesheet" href="style.css">
+
+    <title>ProgressBar</title>
+</head>
+
+<body id="body">
+     <div id="mainContent"></div> 
+    <br><br>
+      <div id="targetTitle">target</div>
+    <input type="number" min="0" oninput = "validity.valid||(value='');" id="target" value="0"> <button onclick="resetTarget()" id = "buttomTarget">Add Target</button> 
+      <br><br>
+      
+      <div id = "cashTitle">$ cash</div>
+      <input type="number" min = "0" oninput = "validity.valid||(value='');" id="cash" value="0"> <button onclick="move()" id = "buttom"> Add in my card </button>
+      <b></b>
+      
+      <br><br>
+      <button onclick="initPage(), setValue()" id = "start"> Refresh </button>
+      <b></b>
+	  <br><br>
+	  Инструкция: <br>1) Вводим значение target в inner под target<br>
+	  2) Нажать на кнопку Add Target<br>
+	  3) Воодим значение сash для добавления его к прогрессбару<br>
+	  4) Для обнуления нажать Refresh<br><br>
+
+	  Я попытался сделать окно компонентой. Курс по react следующий на очереди, после которого смогу делать полноценные компоненты.
+	  <br>На создание этого окна ушло около 6 рабочих дней.
+
+      <script src="app.js"></script>
+	  <script>
+		document.getElementById("mainContent").innerHTML = render();
+
+		function initPage() {
+			init();
+			document.getElementById('buttomTarget').style.visibility = 'visible';
+			document.getElementById('buttom').style.display = 'none';
+			document.getElementById('target').style.visibility = 'visible';
+
+			isTargetReached = false; width = 0; displayBill=0; numToReach=0;
+		}
+		
+		function resetTarget() {
+			document.getElementById('buttomTarget').style.visibility = 'hidden';
+			document.getElementById('buttom').style.display = 'initial';
+			document.getElementById( 'target' ).style.visibility = 'hidden' ;
+			
+			addTarget();
+		}
+		initPage();
+	  </script>
+</body>
+</html>
+
